@@ -14,5 +14,4 @@ urlpatterns = [
     path('like', ToggleLike.as_view()),
     path('bookmark', ToggleBookmark.as_view()),
 
-
 ]

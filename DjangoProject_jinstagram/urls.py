@@ -27,9 +27,10 @@ urlpatterns = [
     path('main/',Main.as_view()),
     path('content/', include('content.urls')),
     path('user/',include('user.urls')),
-    path('main/join',Join.as_view()),
+#     path('main/join',Join.as_view()),
+#
+#     path('main/login', Login.as_view()),
 
-    path('main/login', Login.as_view()),
 ]
 
 urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)

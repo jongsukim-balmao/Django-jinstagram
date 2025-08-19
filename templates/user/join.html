@@ -52,7 +52,7 @@
         </div>
 
         <div style="padding :20px ; text-align:center ; border : solid 1px rgba(200,200,200, 1); width :300px; height:100px ; margin-top : 30px; background:white">
-            <div>계정이 있으신가요 ? <a href = "login">로그인</a></div>
+            <div>계정이 있으신가요 ? <a href = "{% url 'login' %}">로그인</a></div>
         </div>
    </div>
 
@@ -77,16 +77,18 @@
             dataType: "json",
             success: function (data){
                 alert(data.message);
-                location.replace('/user/login');
+                location.replace('{% url 'login' %}');
             },
             error:function (request, status, error){
                 let data = JSON.parse(request.responseText);
                 console.log(data.message);
                 alert(data.message);
             },
-        })
+            complete: function () {
+            }
+        });
 
-    })
+    });
 </script>
 
 

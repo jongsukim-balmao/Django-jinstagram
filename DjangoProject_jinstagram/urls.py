@@ -24,12 +24,12 @@ from user.views import Login , Join
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('main/',Main.as_view()),
+    path('main/',Main.as_view(),name='main'),
     path('content/', include('content.urls')),
     path('user/',include('user.urls')),
-#     path('main/join',Join.as_view()),
-#
-#     path('main/login', Login.as_view()),
+    path('main/join',Join.as_view(), name='join'),
+
+    path('main/login', Login.as_view(), name='login'),
 
 ]
 

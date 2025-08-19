@@ -16,36 +16,51 @@ class Join(APIView):
 
     def post(self,request):
         # todo 회원 가입
-        email = request.data.get('email',None)
-        nickname = request.data.get('nickname', None)
-        name = request.data.get('name', None)
-        password = request.data.get('password', None)
+        email = request.data.get('email')
+        nickname = request.data.get('nickname')
+        name = request.data.get('name')
+        password = request.data.get('password')
+
+        if User.objects.filter(email=email).exists():
+            return Response(status=500, data=dict(message='해당 이메일 주소가 존재합니다.'))
+        elif User.objects.filter(name=name).exists():
+            return Response(status=500, data=dict(message='사용자 이름 "' + name + '"이(가) 존재합니다.'))
 
         User.objects.create(email=email,
                             nickname=nickname,
                             name=name,
                             password=make_password(password),
                             profile_image="default_profile.jpg")
-        return Response(status = 200)
+
+        return Response(status = 200,data=dict(message="회원가입 성공했습니다. 로그인 해주세요."))
 
 class Login(APIView):
     def get(self,request):
         return render(request,'user/login.html')
 
     def post(self,request):
-        email = request.data.get('email')
-        password = request.data.get('password')
+        email = request.data.get('email',None)
+        password = request.data.get('password',None)
+
+        if email is None:
+            return Response(status=500, data=dict(message='이메일을 입력해주세요'))
+
+        if password is None:
+            return Response(status=500, data=dict(message='비밀번호를 입력해주세요'))
 
         user = User.objects.filter(email=email).first()
 
         if user is None:
-            return Response(status = 400,data = dict(message = " 회원 정보가 잘못 되었습니다"))
-        if user.check_password(password):
+            return Response(status = 500, data = dict(message = " 회원 정보가 잘못 되었습니다"))
+
+        if check_password(password,user.password) is False:
+            return Response(status=500, data=dict(message=" 회원 정보가 잘못 되었습니다"))
+
             # todo login 함 : server의 session or  browser의 쿠키에 넣는다
-            request.session['email'] = email
-            return Response(status = 200, data =dict(message = " login 성공하였습니다"))
-        else:
-            return Response(status = 400, data=dict (message = "회원정보가 잘못 되었습니다"))
+        request.session['loginCheck'] = True
+        request.session['email'] = user.email
+        return Response(status = 200, data =dict(message=" login 성공하였습니다"))
+
 
 class Logout(APIView):
     def get(self,request):

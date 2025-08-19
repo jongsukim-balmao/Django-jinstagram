@@ -279,7 +279,7 @@
                     <ul class="dropdown-menu" style = "margin-left: -158px ; ">
                         <li><a class="dropdown-item" href="/content/profile">profile</a></li>
                         <li><hr class = " dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/user/logout">logout</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -518,13 +518,14 @@
                 &nbsp&nbsp
             </div>
             <div>
-                이미지 삽입하기
+                이미지 up load 게시하기
             </div>
             <div id = "close_first_modal">
                 <span class="material-symbols-outlined"  style="background-color: gray">close</span>
             </div>
         </div>
-        <div id = "img_upload_space_1" class="img_upload_space" style="background-color: orange ; width :780px ; height:550px">
+        <div id = "img_upload_space_1" class="img_upload_space" style="display:flex ; justify-content:center ; align-items:center ;font-weight: bold ; background-color: orange ; width :780px ; height:550px">
+            ( windows에서 탐색기를 열어 사진을 선택하여  여기로  drag & drop 하세요)
         </div>
     </div>
 </div>

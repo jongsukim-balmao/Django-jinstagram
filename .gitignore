@@ -14,13 +14,12 @@ env/
 .vscode/
 .idea/
 *.iml
-
 # Django
 *.log
 local_settings.py
 staticfiles/
 media/
-
+echo "DjangoProject_jinstagram/local_settings.py" >> .gitignore
 # Database
 *.sqlite3
 
@@ -47,3 +46,4 @@ htmlcov/
 # Windows
 Thumbs.db
 requirements.txt
+DjangoProject_jinstagram/local_settings.py

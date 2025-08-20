@@ -1,5 +1,6 @@
 # Python
 __pycache__/
+*.pyc
 *.py[cod]
 *$py.class
 
@@ -45,3 +46,4 @@ htmlcov/
 
 # Windows
 Thumbs.db
+requirements.txt

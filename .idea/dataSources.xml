@@ -10,5 +10,13 @@
       <jdbc-url>jdbc:sqlite:C:\Users\KIM JONGSU\PycharmProjects\DjangoProject\db.sqlite3</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="heabaragi_jinstagram_rds" uuid="2b2ceafb-6ecc-4479-b368-7be8673cf6fa">
+      <driver-ref>mysql_aurora.aws_wrapper</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>aws에 설정한 heabaragi_jinstagram_rds</remarks>
+      <jdbc-driver>software.amazon.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:aws-wrapper:mysql://heabaragi-instance-1.cq1u2cs6qm2k.us-east-1.rds.amazonaws.com:3306/main</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

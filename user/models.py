@@ -14,7 +14,7 @@ class User(AbstractBaseUser):
     """
 
     profile_image = models.TextField()
-    nickname = models.TextField(max_length=50,unique=True)
+    nickname = models.CharField(max_length=20, unique=True) # CharField로 변경하고 max_length 지정
     email = models.EmailField(unique=True)
     name = models.CharField(max_length=50)
 

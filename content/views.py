@@ -92,7 +92,7 @@ class UploadFeed(APIView):
 
         Feed.objects.create(content=content, image=image,  email=email )
 
-        return Response(status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_200_OK,data=dict(message="이미지 업로드 성공 했습니다"))
 
 class Profile(APIView):
     def get(self, request):

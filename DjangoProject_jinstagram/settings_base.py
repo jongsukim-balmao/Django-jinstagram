@@ -75,27 +75,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'DjangoProject_jinstagram.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-# sqllite3 database
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-#
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'HOST': 'heabaragi-instance-1.cq1u2cs6qm2k.us-east-1.rds.amazonaws.com',
-#         'NAME': 'main',
-#         'USER': 'admin',
-#         'PASSWORD': 'kjs8892!7942',
-#         'PORT': '3306',
-#         'OPTIONS': {'charset': 'utf8mb4'},
-#     }
-# }
 
 # 환경 변수를 사용한 DB접속(보안 해결)
 DATABASES = {
@@ -106,7 +85,9 @@ DATABASES = {
         'USER': os.environ.get('MYSQL_USER'),
         'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
         'PORT': '3306',
-        'OPTIONS': {'charset': 'utf8mb4'},
+        'OPTIONS': {'charset': 'utf8mb4',
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
     }
 }
 

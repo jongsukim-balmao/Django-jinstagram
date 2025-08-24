@@ -262,7 +262,7 @@
                 <a href = "/content/main"><span class="material-symbols-outlined" style ="color:black">home</span></a>
                     <span class="material-symbols-outlined">favorite</span>
                     <span class="material-symbols-outlined">explore</span>
-                    <span class="material-symbols-outlined" id="nav_bar_add_box">add_box</span>
+                    <span class="material-symbols-outlined" id="nav_bar_add_box" style = "cursor:pointer">add_box</span>
                 <div class="dropdown" style=" width:25px ; height:25px">
 
                         <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -872,6 +872,7 @@
             },
             complete: function () {
                 console.log('database에 저장 완료');
+                alert(data.message);
                 location.replace("/main");
             }
         })
@@ -880,7 +881,6 @@
 
 
 </script>
-
 
 
 

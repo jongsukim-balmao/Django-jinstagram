@@ -18,5 +18,13 @@
       <jdbc-url>jdbc:aws-wrapper:mysql://heabaragi-instance-1.cq1u2cs6qm2k.us-east-1.rds.amazonaws.com:3306/main</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="main@localhost" uuid="e0c55cfe-7a32-4516-9a15-af1eceea0ce9">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>Django-jinstagram-localdb</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/main</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

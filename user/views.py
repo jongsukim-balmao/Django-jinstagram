@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from uuid import uuid4
 import os
 from DjangoProject_jinstagram.settings import MEDIA_ROOT
-
+from django.contrib import messages
 # Create your views here.
 
 class Join(APIView):
@@ -43,29 +43,29 @@ class Login(APIView):
         password = request.data.get('password',None)
 
         if email is None:
-            return Response(status=500, data=dict(message='이메일을 입력해주세요'))
+            return Response(status=400, data=dict(message="이메일을  입력해주세요."))
 
         if password is None:
-            return Response(status=500, data=dict(message='비밀번호를 입력해주세요'))
+            return Response(status=400, data=dict(message="비밀번호를 입력해주세요."))
 
         user = User.objects.filter(email=email).first()
 
         if user is None:
-            return Response(status = 500, data = dict(message = " 회원 정보가 잘못 되었습니다"))
+            return Response(status=401, data=dict(message="이메일  잘못되었습니다."))
 
         if check_password(password,user.password) is False:
-            return Response(status=500, data=dict(message=" 회원 정보가 잘못 되었습니다"))
+            return Response(status=401, data=dict(message="비밀번호가 잘못되었습니다."))
 
             # todo login 함 : server의 session or  browser의 쿠키에 넣는다
         request.session['loginCheck'] = True
         request.session['email'] = user.email
-        return Response(status = 200, data =dict(message=" login 성공하였습니다"))
+        return Response(status=200, data=dict(message="로그인 성공"))
 
 
 class Logout(APIView):
     def get(self,request):
         request.session.flush()
-        return render(request,'user/login.html')
+        return Response(status=status.HTTP_200_OK, data=dict(message="로그아웃 되었습니다."))
 
 
 class UploadProfile(APIView):

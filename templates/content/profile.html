@@ -275,7 +275,7 @@
                     <ul class="dropdown-menu" style = "margin-left: -158px ; ">
                         <li><a class="dropdown-item" href="#">profile</a></li>
                         <li><hr class = " dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/user/logout">logout</a></li>
+                        <li><a id="logout_link" class="dropdown-item" href="#">logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -878,7 +878,25 @@
         })
     }
 
+    $('#logout_link').click(function(event) {
+            // a 태그의 기본 동작(페이지 이동)을 막습니다.
+            event.preventDefault();
 
+            $.ajax({
+                url: "{% url 'user:logout' %}",
+                method: "GET",
+                success: function(response) {
+                    console.log(response.message); // "로그아웃 되었습니다."
+
+                    // 👇 로그아웃 성공 응답을 받은 후, JavaScript가 직접 로그인 페이지로 이동시킵니다.
+                    window.location.replace("{% url 'user:login' %}");
+                },
+                error: function(request, status, error) {
+                    alert("로그아웃에 실패했습니다.");
+                    console.log(error);
+                }
+            });
+        });
 
 </script>
 

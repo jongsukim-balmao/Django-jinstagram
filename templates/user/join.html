@@ -71,17 +71,18 @@
                 email: email,
                 password: password,
                 nickname: nickname,
-                name: name
+                name: name,
+                csrfmiddlewaretoken: '{{ csrf_token }}'
             },
             method: "POST",
             dataType: "json",
-            success: function (data){
-                alert(data.message);
-                location.replace('{% url 'login' %}');
+            success: function (response) {
+                alert(response.message);
+                // 성공 시 로그인 페이지로 이동
+                window.location.replace("{% url 'user:login' %}"); // 앱 이름을 포함한 URL 사용 권장
             },
             error:function (request, status, error){
                 let data = JSON.parse(request.responseText);
-                console.log(data.message);
                 alert(data.message);
             },
             complete: function () {

@@ -46,3 +46,7 @@ htmlcov/
 # Windows
 Thumbs.db
 DjangoProject_jinstagram/local_settings.py
+
+# 운영 server의 systemd의 중요한 설정 조건
+uwsgi.sock
+uwsgi.ini

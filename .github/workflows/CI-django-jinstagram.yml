@@ -26,4 +26,5 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Tests
-      run: python manage.py test --settings=test_settings.py
+      run: python manage.py test
+           --settings=test_settings.py

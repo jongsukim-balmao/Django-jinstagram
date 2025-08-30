@@ -24,18 +24,18 @@ class UserTest(TestCase):
 
     def test_join(self):
         response = self.client.post('/user/join/', data=dict(
-            email = "test_email@naver.com",
-            nickname = "test_nickname",
-            name = "test_name",
-            password =make_password("test_password"))
+            email = "test_email2@naver.com",
+            nickname = "test_nickname2",
+            name = "test_name2",
+            password ="test_password2")
         )
         self.assertEqual(response.status_code, 200)
 
-        user =User.objects.filter(email="test_email@naver.com").first()
+        user =User.objects.filter(email="test_email2@naver.com").first()
 
-        self.assertEqual(user.nickname,"test_nickname")
-        self.assertEqual(user.name,"test_name")
-        self.assertTrue(user.check_password("test_password"))
+        self.assertEqual(user.nickname,"test_nickname2")
+        self.assertEqual(user.name,"test_name2")
+        self.assertTrue(user.check_password("test_password2"))
 
     def test_login(self):
         response = self.client.post('/user/login/', data=dict(

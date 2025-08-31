@@ -26,12 +26,12 @@ urlpatterns = [
     path('admin', admin.site.urls),
 
     # 👇 'user.urls'를 문자열이 아닌, include() 함수로 감싸줍니다.
-    path('user', include('user.urls')),
+    path('user/', include('user.urls')),
 
-    path('content', include('content.urls')),
+    path('content/', include('content.urls')),
 
     path('', Main.as_view(), name='root'),
-    path('main', include('content.urls')),  # '/main/' 요청도 content 앱이 처리하도록 설정
+    path('main/', include('content.urls')),  # '/main/' 요청도 content 앱이 처리하도록 설정
     path('main',Main.as_view(),name='main'),
 
     path('main/join',Join.as_view(), name='join'),

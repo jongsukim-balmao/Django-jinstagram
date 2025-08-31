@@ -1,4 +1,4 @@
-name: CI-django-jinstagram CI
+name: CI-django-jinstagram
 
 on:
   push:

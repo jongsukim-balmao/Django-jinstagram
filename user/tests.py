@@ -23,7 +23,7 @@ class UserTest(TestCase):
         self.assertEqual(1,1) #a랑 b가 같으면 통과 아니면 실패
 
     def test_join(self):
-        response = self.client.post('/user/join/', data=dict(
+        response = self.client.post('/user/join', data=dict(
             email = "test_email2@naver.com",
             nickname = "test_nickname2",
             name = "test_name2",
@@ -38,7 +38,7 @@ class UserTest(TestCase):
         self.assertTrue(user.check_password("test_password2"))
 
     def test_login(self):
-        response = self.client.post('/user/login/', data=dict(
+        response = self.client.post('/user/login', data=dict(
             email='test_email@naver.com',
             password='test_password',
         ))

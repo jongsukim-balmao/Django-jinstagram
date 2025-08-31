@@ -24,7 +24,5 @@ jobs:
         script: |
           source django-jinstagram.sh
           git pull origin main
-          source django-jinstagram.sh
           pip install -r requirements.txt
-          
           sudo systemctl restart uwsgi

@@ -8,10 +8,13 @@ on:
 
 jobs:
   build:
+
+    if: github.event.workflow_run.conclusion == 'success'
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: excuting remote ssh commands
+    - name: executing remote ssh commands
       uses: appleboy/ssh-action@v0.1.10
       with:
         host: ${{ secrets.EC2_HOST }}
@@ -20,5 +23,8 @@ jobs:
         port: 22
         script: |
           source django-jinstagram.sh
-          git pull
+          git pull origin main
+          source django-jinstagram.sh
+          pip install -r requirements.txt
+          
           sudo systemctl restart uwsgi
